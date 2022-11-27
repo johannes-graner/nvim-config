@@ -10,6 +10,7 @@ The following packages are required to make the environment function as intended
 - Tmux, necessary for python debugging as well as generally nice.
 - Python and pip.
 - Node, required for some packages.
+- Ripgrep, required for fuzzy-finding
 - Neovim, obviously.
 
 ## Setup
