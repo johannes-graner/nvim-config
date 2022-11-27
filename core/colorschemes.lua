@@ -154,4 +154,4 @@ M.rand_colorscheme = function()
 end
 
 -- Load a random colorscheme
-M.rand_colorscheme()
+M.catppuccin()
