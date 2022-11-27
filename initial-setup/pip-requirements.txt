@@ -1,0 +1,8 @@
+pynvim
+python-lsp-server[all]
+pylsp-mypy
+pyls-isort
+vim-vint
+flake8
+pylint
+jupyter-client
