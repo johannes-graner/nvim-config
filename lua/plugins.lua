@@ -362,6 +362,17 @@ packer.startup {
     use { "ii14/emmylua-nvim", ft = "lua" }
 
     use { "j-hui/fidget.nvim", after = "nvim-lspconfig", config = [[require('config.fidget-nvim')]] }
+
+    -- Debugger for python.
+    vim.cmd("let g:vimspector_enable_mappings = \'HUMAN\'")
+    use { "puremourning/vimspector" }
+
+    -- Debugging of pytest
+    use { "vim-test/vim-test" }
+    use { "sagi-z/vimspectorpy", run = function() vim.fn["vimspectorpy#update"]() end }
+
+    -- Jupyter client
+    use { 'dccsillag/magma-nvim', run = ':UpdateRemotePlugins' }
   end,
   config = {
     max_jobs = 16,
