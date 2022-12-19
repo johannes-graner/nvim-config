@@ -373,6 +373,9 @@ packer.startup {
 
     -- Jupyter client
     use { 'dccsillag/magma-nvim', run = ':UpdateRemotePlugins' }
+
+    -- Jupytext
+    use { 'goerz/jupytext.vim' }
   end,
   config = {
     max_jobs = 16,

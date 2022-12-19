@@ -104,8 +104,8 @@ if utils.executable("pylsp") then
     settings = {
       pylsp = {
         plugins = {
-          pylint = { enabled = true, executable = "pylint" },
-          pyflakes = { enabled = false },
+          pylint = { enabled = false, executable = "pylint" },
+          pyflakes = { enabled = true },
           pycodestyle = { enabled = false },
           jedi_completion = { fuzzy = true },
           pyls_isort = { enabled = true },
@@ -194,6 +194,16 @@ if utils.executable("lua-language-server") then
     },
     capabilities = capabilities,
   }
+end
+
+if utils.executable("typescript-language-server") then
+  lspconfig.tsserver.setup {
+    on_attach = custom_attach,
+    filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
+    cmd = { "typescript-language-server", "--stdio" },
+  }
+else
+  vim.notify("vim-language-server not found!", vim.log.levels.WARN, { title = "Nvim-config" })
 end
 
 -- Change diagnostic signs.

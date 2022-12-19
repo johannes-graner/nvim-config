@@ -1,9 +1,9 @@
 if exists(':AsyncRun')
-  nnoremap <buffer><silent> <F9> :<C-U>AsyncRun python -u "%"<CR>
+  nnoremap <buffer><silent> <Leader><F9> :<C-U>AsyncRun python -u "%"<CR>
 endif
 
-" Do not wrap Python source code.
-set nowrap
+" wrap Python source code.
+set wrap
 set sidescroll=5
 set sidescrolloff=2
 set colorcolumn=100

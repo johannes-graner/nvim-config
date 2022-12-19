@@ -417,13 +417,13 @@ function! s:wilder_init() abort
 endfunction
 
 """"""""""""""""""""""""""""""vim-auto-save settings""""""""""""""""""""""""""""""
-let g:auto_save = 1  " enable AutoSave on Vim startup
+let g:auto_save = 0  " disable AutoSave on Vim startup
 
 """"""""""""""""""""""""""""""vimspector settings""""""""""""""""""""""""""""""
 let g:vimspector_sidebar_width = 20
 
 """"""""""""""""""""""""""""""vimspectorpy settings""""""""""""""""""""""""""""""
-let g:vimspectorpy#launcher = "tmux"
+let g:vimspectorpy#launcher = "xterm"
 
 """"""""""""""""""""""""""""""Magma settings""""""""""""""""""""""""""""""
 " Disable images
@@ -432,11 +432,14 @@ let g:magma_image_provider = "none"
 " Output does not show automatically
 let g:magma_automatically_open_output = v:false
 
+""""""""""""""""""""""""""""""Jupytext settings""""""""""""""""""""""""""""""
+let g:jupytext_fmt = "py:light"
+
 " Set keybindings
-nnoremap <silent><expr> <LocalLeader>r  :MagmaEvaluateOperator<CR>
-nnoremap <silent>       <LocalLeader>rr :MagmaEvaluateLine<CR>
-xnoremap <silent>       <LocalLeader>r  :<C-u>MagmaEvaluateVisual<CR>
-nnoremap <silent>       <LocalLeader>rc :MagmaReevaluateCell<CR>
-nnoremap <silent>       <LocalLeader>rd :MagmaDelete<CR>
-nnoremap <silent>       <LocalLeader>ro :MagmaShowOutput<CR>
+nnoremap <silent><expr> <Leader>r  :MagmaEvaluateOperator<CR>
+nnoremap <silent>       <Leader>rr :MagmaEvaluateLine<CR>
+xnoremap <silent>       <Leader>r  :<C-u>MagmaEvaluateVisual<CR>
+nnoremap <silent>       <Leader>rc :MagmaReevaluateCell<CR>
+nnoremap <silent>       <Leader>rd :MagmaDelete<CR>
+nnoremap <silent>       <Leader>ro :MagmaShowOutput<CR>
 

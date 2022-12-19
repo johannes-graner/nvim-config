@@ -5,4 +5,7 @@ pyls-isort
 vim-vint
 flake8
 pylint
+ipython
+ipykernel
 jupyter-client
+jupytext

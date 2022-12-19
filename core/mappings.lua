@@ -172,6 +172,9 @@ keymap.set({ "x", "o" }, "iu", "<cmd>call text_obj#URL()<cr>", { desc = "URL tex
 -- Text objects for entire buffer
 keymap.set({ "x", "o" }, "iB", "<cmd>call text_obj#Buffer()<cr>", { desc = "buffer text object" })
 
+-- Close current buffer
+keymap.set("n", "<Leader>bd", "<cmd>bd<cr>")
+
 -- Do not move my cursor when joining lines.
 keymap.set("n", "J", function()
   vim.cmd([[
@@ -225,6 +228,7 @@ keymap.set("c", "<C-A>", "<HOME>")
 -- Delete the character to the right of the cursor
 keymap.set("i", "<C-D>", "<DEL>")
 
+-- Breakpoint window for vimspector
 keymap.set("n", "<leader>db", "<Plug>VimspectorBreakpoints")
 
 keymap.set("n", "<leader>cb", function()
