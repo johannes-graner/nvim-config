@@ -380,10 +380,13 @@ packer.startup {
     use { "sagi-z/vimspectorpy", run = function() vim.fn["vimspectorpy#update"]() end }
 
     -- Jupyter client
-    use { 'dccsillag/magma-nvim', run = ':UpdateRemotePlugins' }
+    use { 'johannes-graner/magma-nvim', run = ':UpdateRemotePlugins' }
 
     -- Jupytext
     use { 'goerz/jupytext.vim' }
+
+    -- Images inside nvim
+    use { 'edluffy/hologram.nvim' }
 
     -- Mason for LSP configs
     use { "williamboman/mason.nvim" }
