@@ -250,3 +250,5 @@ keymap.set("n", "<leader>cb", function()
   end))
 end)
 
+require('leap').add_default_mappings()
+vim.keymap.set({'n', 'x', 'o'}, 'gS', '<Plug>(leap-cross-window)')

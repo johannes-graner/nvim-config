@@ -88,6 +88,7 @@ packer.startup {
       use { "vlime/vlime", rtp = "vim/", ft = { "lisp" } }
     end
 
+    --[[
     -- Super fast buffer jump
     use {
       "phaazon/hop.nvim",
@@ -97,6 +98,13 @@ packer.startup {
           require("config.nvim_hop")
         end, 2000)
       end,
+    }
+    --]]
+
+    -- Buffer jumping
+    use {
+      "ggandor/leap.nvim",
+      config = [[require('leap').add_default_mappings()]],
     }
 
     -- Show match number and index for searching
@@ -284,7 +292,7 @@ packer.startup {
     use { "wellle/targets.vim", event = "VimEnter" }
 
     -- Plugin to manipulate character pairs quickly
-    use { "machakann/vim-sandwich", event = "VimEnter" }
+    -- use { "machakann/vim-sandwich", event = "VimEnter" }
 
     -- Add indent object for vim (useful for languages like Python)
     use { "michaeljsmith/vim-indent-object", event = "VimEnter" }
