@@ -98,6 +98,32 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 local lspconfig = require("lspconfig")
 
+lspconfig.rust_analyzer.setup {
+  on_attach = custom_attach,
+  settings = {
+    ["rust-analyzer"] = {
+      imports = {
+        granularity = {
+          group = "module",
+        },
+        prefix = "self",
+      },
+      cargo = {
+        buildScripts = {
+          enable = true,
+        },
+      },
+      procMacro = {
+        enable = true
+      },
+    },
+  },
+  flags = {
+    debounce_text_changes = 200,
+  },
+  capabilities = capabilities,
+}
+
 if utils.executable("pylsp") then
   lspconfig.pylsp.setup {
     on_attach = custom_attach,

@@ -384,6 +384,11 @@ packer.startup {
 
     -- Jupytext
     use { 'goerz/jupytext.vim' }
+
+    -- Mason for LSP configs
+    use { "williamboman/mason.nvim" }
+    require('mason').setup()
+    use { "williamboman/mason-lspconfig.nvim" }
   end,
   config = {
     max_jobs = 16,
