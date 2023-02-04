@@ -139,7 +139,7 @@ packer.startup {
     use { "sainnhe/everforest", opt = true }
     use { "EdenEast/nightfox.nvim", opt = true }
     use { "rebelot/kanagawa.nvim", opt = true }
-    use { "catppuccin/nvim", as = "catppuccin", opt = true }
+    use { "catppuccin/nvim", as = "catppuccin" }
     use({ "rose-pine/neovim", as = 'rose-pine', opt = true })
     use { "olimorris/onedarkpro.nvim", opt = true }
     use { "tanvirtin/monokai.nvim", opt = true }
