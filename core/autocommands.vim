@@ -68,10 +68,10 @@ function! s:custom_highlight() abort
   highlight MatchParen cterm=bold,underline gui=bold,underline
 endfunction
 
-augroup auto_close_win
-  autocmd!
-  autocmd BufEnter * call s:quit_current_win()
-augroup END
+"augroup auto_close_win
+"  autocmd!
+"  autocmd BufEnter * call s:quit_current_win()
+"augroup END
 
 " Quit Nvim if we have only one window, and its filetype match our pattern.
 function! s:quit_current_win() abort
@@ -117,6 +117,11 @@ endfunction
 augroup LargeFile
   autocmd!
   autocmd BufReadPre * call s:handle_large_file()
+augroup END
+
+augroup lint_on_save
+  autocmd!
+  autocmd BufWritePre *.{js,ts,tsx} Neoformat
 augroup END
 
 " Load auto-command defined in Lua

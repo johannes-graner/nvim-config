@@ -392,6 +392,24 @@ packer.startup {
     use { "williamboman/mason.nvim" }
     require('mason').setup()
     use { "williamboman/mason-lspconfig.nvim" }
+
+    -- Typescript Debugger
+    use {
+      "microsoft/vscode-js-debug",
+      opt = true,
+      run = "npm install --legacy-peer-deps && npm run compile"
+    }
+
+    -- LaTeX LSP
+    use {
+      "latex-lsp/texlab",
+      opt = true,
+    }
+
+    use {
+      "https://gitlab.com/schrieveslaach/sonarlint.nvim"
+    }
+
   end,
   config = {
     max_jobs = 16,

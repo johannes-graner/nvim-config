@@ -7,6 +7,10 @@ local diagnostic = vim.diagnostic
 local utils = require("utils")
 
 local custom_attach = function(client, bufnr)
+
+  -- Enable completion triggered by <c-x><c-o>
+  vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+
   -- Mappings.
   local map = function(mode, l, r, opts)
     opts = opts or {}
@@ -131,7 +135,7 @@ if utils.executable("pylsp") then
       pylsp = {
         plugins = {
           pylint = { enabled = false, executable = "pylint" },
-          pyflakes = { enabled = true },
+          pyflakes = { enabled = false },
           pycodestyle = { enabled = false },
           jedi_completion = { fuzzy = true },
           pyls_isort = { enabled = true },
@@ -156,6 +160,18 @@ end
 -- else
 --   vim.notify("pyright not found!", vim.log.levels.WARN, {title = 'Nvim-config'})
 -- end
+
+if utils.executable("ruff-lsp") then
+  lspconfig.ruff_lsp.setup {
+    on_attach = custom_attach,
+    capabilities = capabilities,
+    flags = {
+      debounce_text_changes = 500,
+    },
+  }
+else
+  vim.notify("ruff-lsp not found!", vim.log.levels.WARN, {title = 'Nvim-config'})
+end
 
 if utils.executable("clangd") then
   lspconfig.clangd.setup {
@@ -229,7 +245,35 @@ if utils.executable("typescript-language-server") then
     cmd = { "typescript-language-server", "--stdio" },
   }
 else
-  vim.notify("vim-language-server not found!", vim.log.levels.WARN, { title = "Nvim-config" })
+  vim.notify("typescript-language-server not found!", vim.log.levels.WARN, { title = "Nvim-config" })
+end
+
+if utils.executable("texlab") then
+  lspconfig.texlab.setup {
+    on_attach = custom_attach,
+    capabilities = capabilities,
+    filetypes = { "tex", "latex" },
+  }
+else
+  vim.notify("texlab not found!", vim.log.levels.WARN, { title = "Nvim-config" })
+end
+
+if false then
+  local sonarlint_path = "/Users/johannesgraner/git/other/sonarlint-language-server/target/"
+  require("sonarlint").setup {
+    server = {
+        -- Basic command to start sonarlint-language-server. Will be enhanced with additional command line options
+        cmd = { "java", "-jar", sonarlint_path .. "sonarlint-language-server-2.16.0-SNAPSHOT.jar", "-stdio" }
+    },
+    analyzers = {
+        -- Tested and working
+        python = sonarlint_path .. "plugins/sonarpython.jar",
+        html = sonarlint_path .. "plugins/sonarhtml.jar",
+        js = sonarlint_path .. "plugins/sonarjs.jar",
+        xml = sonarlint_path .. "plugins/sonarxml.jar",
+        text = sonarlint_path .. "plugins/sonartext.jar",
+    }
+  }
 end
 
 -- Change diagnostic signs.
